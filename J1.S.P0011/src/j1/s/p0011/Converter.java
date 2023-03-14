@@ -6,6 +6,7 @@
 package j1.s.p0011;
 
 import java.io.IOException;
+import java.math.BigInteger;
 
 /**
  *
@@ -16,7 +17,8 @@ public class Converter {
     
     public void binToDecAndHex() throws IOException{
         String finalOutput;
-        int outputBase,decimal;
+        int outputBase;
+        BigInteger decimal;
         System.out.println("Choose the output base system (10 for decimal, 16 for hexadecimal): ");
         do{
             outputBase = in.getInt();
@@ -27,14 +29,14 @@ public class Converter {
             case 10:
                 System.out.println("Enter binary:");
                 finalOutput = in.getBinary();
-                decimal = Integer.parseInt(finalOutput, 2);
+                decimal = new BigInteger(finalOutput, 2);
                 System.out.println("The equivalent value in the chosen base system is: " + decimal);
                 break;
             case 16:
                 System.out.println("Enter binary:");
                 finalOutput = in.getBinary();
-                decimal = Integer.parseInt(finalOutput, 2);
-                finalOutput = Integer.toHexString(decimal);
+                decimal = new BigInteger(finalOutput, 2);
+                finalOutput = decimal.toString(16);
                 System.out.println("The equivalent value in the chosen base system is: " + finalOutput);
                 break;
             default:
@@ -44,7 +46,9 @@ public class Converter {
 
     void decToBinAndHex() throws IOException {
         String finalOutput;
-        int outputBase,decimal;
+        int outputBase;
+        BigInteger decimal;
+        
         System.out.println("Choose the output base system (2 for binary, 16 for hexadecimal): ");
         do{
             outputBase = in.getInt();
@@ -54,13 +58,14 @@ public class Converter {
         switch(outputBase){
             case 2:
                 System.out.println("Enter decimal:");
-                finalOutput = Integer.toBinaryString(in.getInt());
+                decimal=new BigInteger(in.getString("^[0-9]+?$","Invalid Base... Please try again"));
+                finalOutput = decimal.toString(2);
                 System.out.println("The equivalent value in the chosen base system is: " + finalOutput);
                 break;
             case 16:
                 System.out.println("Enter decimal:");
-                decimal=in.getInt();
-                finalOutput = Integer.toHexString(decimal);
+                decimal=new BigInteger(in.getString("^[0-9]+?$","Invalid Base... Please try again"));
+                finalOutput = decimal.toString(16);
                 System.out.println("The equivalent value in the chosen base system is: " + finalOutput);
                 break;
             default:
@@ -70,7 +75,8 @@ public class Converter {
 
     void hexToDecAndBin() throws IOException {
         String finalOutput;
-        int outputBase,decimal;
+        int outputBase;
+        BigInteger decimal;
         System.out.println("Choose the output base system (2 for binary, 10 for hexadecimal): ");
         do{
             outputBase = in.getInt();
@@ -81,14 +87,14 @@ public class Converter {
             case 2:
                 System.out.println("Enter hexadecimal:");
                 finalOutput = in.getHexadecimal();
-                decimal = Integer.parseInt(finalOutput, 16);
-                finalOutput=Integer.toBinaryString(decimal);
+                decimal = new BigInteger(finalOutput,16);
+                finalOutput=decimal.toString(2);
                 System.out.println("The equivalent value in the chosen base system is: " + finalOutput);
                 break;
             case 10:
                 System.out.println("Enter hexadecimal:");
                 finalOutput = in.getHexadecimal();
-                decimal = Integer.parseInt(finalOutput, 16);
+                decimal = new BigInteger(finalOutput,16);
                 System.out.println("The equivalent value in the chosen base system is: " + decimal);
                 break;
             default:

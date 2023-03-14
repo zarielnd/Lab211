@@ -29,10 +29,10 @@ public class Validate {
         return Integer.parseInt(temp);
     }
 
-    public String getString() throws IOException {
+    public String getString(String regex, String alert) throws IOException {
         String temp = input.readLine();
-        while (!temp.matches("[a-zA-Z]+")) { // loop until user input a String
-            System.out.println("Input cannot contain special characters... Please try again:");
+        while (!temp.matches(regex)) { // loop until user input a String
+            System.out.println(alert);
             temp = input.readLine();
         }
         return temp;
