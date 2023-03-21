@@ -19,7 +19,7 @@ public class Menu {
      */
     public static void main(String[] args) throws IOException {
         Validate in = new Validate();
-        Converter convert = new Converter();
+        Display convert = new Display();
         int inputBase;
         String outputValue;
         
